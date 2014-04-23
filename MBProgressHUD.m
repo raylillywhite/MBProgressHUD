@@ -184,7 +184,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.opacity = 0.8f;
         self.color = nil;
 		self.labelFont = [UIFont boldSystemFontOfSize:kLabelFontSize];
-        self.labelColor = [UIColor whiteColor];
+        self.labelColor = [UIColor blackColor];
 		self.detailsLabelFont = [UIFont boldSystemFontOfSize:kDetailsLabelFontSize];
         self.detailsLabelColor = [UIColor whiteColor];
 		self.xOffset = 0.0f;
@@ -500,13 +500,16 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	BOOL isActivityIndicator = [indicator isKindOfClass:[UIActivityIndicatorView class]];
 	BOOL isRoundIndicator = [indicator isKindOfClass:[MBRoundProgressView class]];
 	
-	if (mode == MBProgressHUDModeIndeterminate &&  !isActivityIndicator) {
-		// Update to indeterminate indicator
-		[indicator removeFromSuperview];
-		self.indicator = MB_AUTORELEASE([[UIActivityIndicatorView alloc]
-										 initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]);
-		[(UIActivityIndicatorView *)indicator startAnimating];
-		[self addSubview:indicator];
+	if (mode == MBProgressHUDModeIndeterminate) {
+        if (!isActivityIndicator) {
+            // Update to indeterminate indicator
+            [indicator removeFromSuperview];
+            self.indicator = MB_AUTORELEASE([[UIActivityIndicatorView alloc]
+                initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]);
+            [(UIActivityIndicatorView *)indicator startAnimating];
+            [self addSubview:indicator];
+        }
+        [(UIActivityIndicatorView *)indicator setColor:self.labelColor];
 	}
 	else if (mode == MBProgressHUDModeDeterminateHorizontalBar) {
 		// Update to bar determinate indicator
@@ -737,6 +740,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		label.font = self.labelFont;
 	} else if ([keyPath isEqualToString:@"labelColor"]) {
 		label.textColor = self.labelColor;
+        [self updateIndicators];
 	} else if ([keyPath isEqualToString:@"detailsLabelText"]) {
 		detailsLabel.text = self.detailsLabelText;
 	} else if ([keyPath isEqualToString:@"detailsLabelFont"]) {
