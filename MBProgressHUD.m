@@ -472,10 +472,10 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	label.textColor = self.labelColor;
 	label.font = self.labelFont;
 	label.text = self.labelText;
-    label.layer.shadowOffset = CGSizeMake(0, 0);
-    label.layer.shadowColor = [[UIColor blackColor] CGColor];
-    label.layer.shadowRadius = 1.0;
-    label.layer.shadowOpacity = 0.75;
+//    label.layer.shadowOffset = CGSizeMake(0, 0);
+//    label.layer.shadowColor = [[UIColor blackColor] CGColor];
+//    label.layer.shadowRadius = 1.0;
+//    label.layer.shadowOpacity = 0.75;
 	[self addSubview:label];
 	
 	detailsLabel = [[UILabel alloc] initWithFrame:self.bounds];
@@ -1077,12 +1077,12 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 
 @interface MMBlurView ()
 
-@property(nonatomic, MB_WEAK) UIView *parent;
-@property(nonatomic, MB_WEAK) CGPoint location;
-@property(nonatomic, MB_WEAK) MMBlurType blurType;
-@property(nonatomic, MB_STRONG) MMBlurComponents *colorComponents;
-@property(nonatomic, MB_STRONG) UIImageView *backgroundImageView;
-@property(nonatomic, MB_WEAK) dispatch_source_t timer;
+@property(nonatomic, weak) UIView *parent;
+@property(nonatomic, assign) CGPoint location;
+@property(nonatomic, assign) MMBlurType blurType;
+@property(nonatomic, strong) MMBlurComponents *colorComponents;
+@property(nonatomic, strong) UIImageView *backgroundImageView;
+@property(nonatomic, assign) dispatch_source_t timer;
 //Property with retain or strong attribute must be of object type
 @end
 
