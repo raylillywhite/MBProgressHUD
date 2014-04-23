@@ -213,8 +213,8 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
         
         self.layer.shadowOffset = CGSizeMake(0, 0);
         self.layer.shadowColor = [[UIColor blackColor] CGColor];
-        self.layer.shadowOpacity = 0.75f;
-        self.layer.shadowRadius = 1.0;
+        self.layer.shadowOpacity = 0.5f;
+        self.layer.shadowRadius = 0.5;
 		
 		[self setupLabels];
 		[self updateIndicators];
@@ -1216,8 +1216,8 @@ dispatch_source_t DispatchTimer(uint64_t interval, uint64_t leeway, dispatch_que
 
 + (MMBlurComponents *) lightEffect {
     MMBlurComponents *components = MB_AUTORELEASE([[MMBlurComponents alloc] init]);
-    components.radius = 6;
-    components.tintColor = [UIColor colorWithWhite:.8f alpha:.2f];
+    components.radius = 4;
+    components.tintColor = [UIColor colorWithWhite:1.f alpha:0.6f];
     components.saturationDeltaFactor = 1.8f;
     components.maskImage = nil;
     return components;
