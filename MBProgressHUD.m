@@ -1382,7 +1382,7 @@ dispatch_source_t DispatchTimer(uint64_t interval, uint64_t leeway, dispatch_que
         
         if (hasBlur) {
             CGFloat inputRadius = blurRadius * 1;
-            NSUInteger radius = floor(inputRadius * 3. * sqrt(2 * M_PI) / 4 + 0.5);
+            unsigned int radius = floor(inputRadius * 3. * sqrt(2 * M_PI) / 4 + 0.5);
             
             if (radius % 2 != 1) {
                 radius += 1;
