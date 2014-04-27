@@ -1,5 +1,6 @@
 # MBProgressHUD With Blurred Background [![Build Status](https://travis-ci.org/matej/MBProgressHUD.png)](https://travis-ci.org/matej/MBProgressHUD)
 
+
 ##What's new
 
 Blurred background like original iOS7 have been added!!! You can just use it like what you did before, but the effect has added.
